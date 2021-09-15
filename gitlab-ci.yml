@@ -1,0 +1,9 @@
+before_script:
+  - docker info
+  - helm version
+
+build-docker-image:
+  stage: build
+  script:
+    - docker build -t mytestimage .
+

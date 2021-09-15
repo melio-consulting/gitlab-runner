@@ -1,0 +1,18 @@
+concurrent = 1
+check_interval = 0
+
+[session_server]
+  session_timeout = 1800
+
+[[runners]]
+  executor = "docker"
+  environment = ["DOCKER_DRIVER=overlay2", "DOCKER_TLS_CERTDIR="]
+  [runners.docker]
+    tls_cert_path = ""
+    tls_verify = false
+    image = "docker:20.10.8"
+    privileged = true
+    volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock"]
+    disable_cache = false
+  [runners.cache]
+    Insecure = false
